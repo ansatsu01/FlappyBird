@@ -53,9 +53,30 @@ bird_.setY(bird_.y() + bird_speed);
 bird_speed+=1;
 
 
-if (bird_.y() + 41 >= this->height()) {
+if (bird_.y() + 39 >= this->height()) {
    bird_speed = 0;
    pipe_speed = 0;
+}
+
+
+for (int i = 0; i < 5; i++) {    // bird: 39x52
+
+    if ((bird_.x() + 52 >= points[i].x() - 30 && bird_.x() + 52 <= points[i].x() + 30) ||
+            (bird_.x() >= points[i].x() - 30 && bird_.x() <= points[i].x() + 30)){
+
+
+        if(bird_.y() + 39 >= points[i].y() + 65 ){
+         bird_speed = 0;
+        pipe_speed = 0;
+ }
+        if(bird_.y() <= points[i].y() - 65){
+            bird_speed = 0;
+            pipe_speed = 0;
+        }
+ else{
+            counter++;
+        }
+ }
 }
 
 this-> update();
