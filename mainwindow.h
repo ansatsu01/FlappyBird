@@ -30,13 +30,22 @@ public:
     ~MainWindow();
 
 public slots:
-  void movePipes();
+  void moveObjects();
+  void ActionBeforeTheStart();
+  void StartOfGame();
+  void Restart();
+  void Death();
 private:
     Ui::MainWindow *ui;
     std::vector<QPoint> points;
     QPoint bird_;
-    double pipe_speed;
-    double bird_speed;
+    int pipe_speed;
+    int start_b_speed;
+    int bird_speed;
+    int counter;    
+    QTimer* objects_t = new QTimer(this);
+    QTimer* start_timer = new QTimer(this);
+    QString result;
 
 };
 #endif // MAINWINDOW_H
