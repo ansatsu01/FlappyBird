@@ -43,9 +43,10 @@ private:
     int start_b_speed;
     int bird_speed;
     int counter;    
+    int anim_index;
     QTimer* objects_t = new QTimer(this);
     QTimer* start_timer = new QTimer(this);
     QString result;
-
+    QImage* bird_images[3];
 };
 #endif // MAINWINDOW_H
