@@ -11,7 +11,7 @@ class Bird : public QObject
 public:
 
 Bird(QPoint& for_bird);
-void create_bird(QPainter& painter);
+void create_bird(QPainter& painter, QImage* image);
 
 private:
 QPoint birdy;
