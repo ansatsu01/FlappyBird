@@ -14,13 +14,19 @@ MainWindow::MainWindow(QWidget *parent)
     , pipe_speed(5)
     , bird_speed(-10)
     , counter(0)
+     ,anim_index(1)
+
 
 {
-   
+    bird_images[0] = new QImage("D:/Viktoria/BSU/programming/yellowbird-upflap.png", "PNG");  //bird :  52x39
+    bird_images[1] = new QImage("D:/Viktoria/BSU/programming/yellowbird-midflap1.png", "PNG");
+    bird_images[2] = new QImage("D:/Viktoria/BSU/programming/yellowbird-downflap.png", "PNG");
 
-   QTimer* ptimer = new QTimer(this);
-    connect(ptimer, SIGNAL(timeout()), SLOT(movePipes()));
-    ptimer->start(25);
+    connect(objects_t, SIGNAL(timeout()), SLOT(moveObjects()));
+    connect (start_timer, SIGNAL(timeout()), SLOT(ActionBeforeTheStart()));
+
+
+    start_timer->start(25);
 
 int betw_pipes = -50;
         
@@ -173,7 +179,8 @@ void MainWindow::paintEvent(QPaintEvent *event){
     pipe3.create_pipe(painter);
     pipe4.create_pipe(painter);
     pipe5.create_pipe(painter);
-    bird.create_bird(painter);
+    bird.create_bird(painter, bird_images[anim_index]);
+    anim_index = (anim_index + 1) % 3;
 
     QImage ground("D:/Viktoria/BSU/programming/ground.png", "PNG");
     painter.drawImage(0,this->height() - 40, ground);
