@@ -6,7 +6,6 @@
 
 #include <QMainWindow>
 #include<QPainter>
-#include<QPixmap>
 #include<QImage>
 #include<QBrush>
 #include <QTimer>
@@ -35,12 +34,16 @@ public slots:
   void StartOfGame();
   void Restart();
   void Death();
+
+private slots:
+
+  void on_pushButton_2_clicked();
+
 private:
     Ui::MainWindow *ui;
     std::vector<QPoint> points;
     QPoint bird_;
     int pipe_speed;
-    int start_b_speed;
     int bird_speed;
     int counter;    
     int anim_index;
@@ -48,5 +51,6 @@ private:
     QTimer* start_timer = new QTimer(this);
     QString result;
     QImage* bird_images[3];
+    std::vector<QString> phrases;
 };
 #endif // MAINWINDOW_H
