@@ -39,6 +39,14 @@ private slots:
 
   void on_pushButton_2_clicked();
 
+  void on_horizontalSlider_valueChanged(int value);
+
+  void on_horizontalSlider_2_valueChanged(int value);
+
+  void on_pushButton_clicked();
+
+  void on_pushButton_4_clicked();
+
 private:
     Ui::MainWindow *ui;
     std::vector<QPoint> points;
@@ -47,6 +55,7 @@ private:
     int bird_speed;
     int counter;    
     int anim_index;
+    int amplitude;
     QTimer* objects_t = new QTimer(this);
     QTimer* start_timer = new QTimer(this);
     QString result;

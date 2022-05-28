@@ -14,6 +14,7 @@ MainWindow::MainWindow(QWidget *parent)
     , bird_speed(-10)
     , counter(0)
      ,anim_index(1)
+    ,amplitude(-10)
 {
 
     bird_images[0] = new QImage("D:/Viktoria/BSU/programming/yellowbird-upflap.png", "PNG");  //bird :  52x39
@@ -35,16 +36,18 @@ int betw_pipes = -50;
             betw_pipes += 300;
         }
  ui->setupUi(this);
+ ui->groupBox_2->hide();
 
- ui->pushButton_2->hide();
- ui->pushButton_3->hide();
- ui->groupBox->hide();
- ui->lcdNumber->display(counter);
- ui->lcdNumber_2->display(counter);
+
 }
 
 void MainWindow::ActionBeforeTheStart(){
-this->update();
+    ui->pushButton_2->hide();
+    ui->pushButton_3->hide();
+    ui->groupBox->hide();
+    ui->lcdNumber->display(counter);
+    ui->lcdNumber_2->display(counter);
+    this->update();
 }
 
 void MainWindow::StartOfGame(){
@@ -139,7 +142,7 @@ void MainWindow::keyPressEvent(QKeyEvent *event){
 if(bird_speed != 0 && start_timer->isActive()){
     if(event->key() == Qt::Key_Space){
 
-        bird_speed = -10;
+        bird_speed = amplitude;
    }
 }
 
@@ -191,4 +194,28 @@ void MainWindow::on_pushButton_2_clicked()
 }
 
 
+
+
+void MainWindow::on_horizontalSlider_valueChanged(int value)
+{
+    pipe_speed = value;
+}
+
+
+void MainWindow::on_horizontalSlider_2_valueChanged(int value)
+{
+    amplitude = -value;
+}
+
+
+void MainWindow::on_pushButton_clicked()
+{
+    ui->groupBox_2->show();
+}
+
+
+void MainWindow::on_pushButton_4_clicked()
+{
+    ui->groupBox_2->close();
+}
 
