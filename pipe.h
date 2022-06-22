@@ -10,8 +10,7 @@ class Pipe : public QObject
 
 public:
     Pipe(QPoint& center);
-    void create_pipe(QPainter& painter);
-
+    void create_pipe(QPainter& painter, QImage& image);
 
     QRect upper_pipe;
     QRect lower_pipe;

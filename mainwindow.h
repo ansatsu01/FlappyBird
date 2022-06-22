@@ -12,6 +12,8 @@
 #include <QKeyEvent>
 #include <random>
 #include<QPaintEvent>
+#include<QFileDialog>
+#include<QMessageBox>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -45,21 +47,28 @@ private slots:
 
   void on_pushButton_clicked();
 
-  void on_pushButton_4_clicked();
+  void on_loadButton__clicked();
+
+  void on_loadButton_2_clicked();
+
+  void on_loadButton_3_clicked();
 
 private:
     Ui::MainWindow *ui;
     std::vector<QPoint> points;
     QPoint bird_;
+    QImage background;
+    QImage pipe_im;
     int pipe_speed;
     int bird_speed;
     int counter;    
     int anim_index;
     int amplitude;
+    int ch_speed;
     QTimer* objects_t = new QTimer(this);
     QTimer* start_timer = new QTimer(this);
     QString result;
     QImage* bird_images[3];
-    std::vector<QString> phrases;
+
 };
 #endif // MAINWINDOW_H
